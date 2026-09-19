@@ -4,7 +4,7 @@ import PanelShell from "@/components/PanelShell";
 
 export default function ExploracionExterior({ events }: { events: SituationalEvent[] }) {
   return (
-    <PanelShell number={1} title="EXPLORACIÓN EXTERIOR">
+    <PanelShell number={1} title="EXPLORACIÓN EXTERIOR" href="/reportes/exterior">
       {events.length === 0 ? (
         <EmptyState />
       ) : (

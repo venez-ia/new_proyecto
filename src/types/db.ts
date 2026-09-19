@@ -1,10 +1,15 @@
 export type RiskLevel = "bajo" | "medio" | "alto" | "critico";
-export type Panel = "exploracion_exterior" | "exploracion_interna";
+export type Panel =
+  | "exploracion_exterior"
+  | "exploracion_interna"
+  | "aero_naval"
+  | "meteorologia";
 export type ReportType = "diario" | "semanal";
 
 export interface SituationalEvent {
   id: string;
   article_id: string | null;
+  telegram_message_id: string | null;
   panel: Panel;
   category: string;
   country: string | null;
@@ -12,6 +17,8 @@ export interface SituationalEvent {
   description: string;
   risk_level: RiskLevel | null;
   status_label: string | null;
+  location_label: string | null;
+  event_time: string | null;
   lat: number | null;
   lng: number | null;
   event_date: string;
@@ -39,6 +46,20 @@ export interface MeteorologiaStatus {
   viento_direccion: string | null;
   condicion: string | null;
   alertas: string | null;
+  boletin_oficial: string | null;
+}
+
+export interface TelegramMessage {
+  id: string;
+  chat_id: number;
+  chat_title: string | null;
+  message_id: number;
+  sender_username: string | null;
+  sender_name: string | null;
+  text: string;
+  message_date: string | null;
+  received_at: string;
+  processed: boolean;
 }
 
 export interface Report {

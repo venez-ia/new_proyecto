@@ -3,7 +3,7 @@ import PanelShell from "@/components/PanelShell";
 
 export default function Meteorologia({ status }: { status: MeteorologiaStatus | null }) {
   return (
-    <PanelShell number={4} title="CONDUCCIÓN METEOROLÓGICA">
+    <PanelShell number={4} title="CONDUCCIÓN METEOROLÓGICA" href="/reportes/meteorologico">
       {!status ? (
         <p className="text-xs text-slate-400">Sin snapshot meteorológico cargado para hoy.</p>
       ) : (
@@ -30,6 +30,12 @@ export default function Meteorologia({ status }: { status: MeteorologiaStatus | 
             <p className="text-xs font-bold uppercase text-slate-500">Alertas</p>
             <p className="text-sm text-red-600">{status.alertas ?? "Sin alertas activas"}</p>
           </div>
+          {status.boletin_oficial && (
+            <div className="col-span-2 border-t border-slate-100 pt-2">
+              <p className="text-xs font-bold uppercase text-slate-500">Boletín INAMEH</p>
+              <p className="text-xs text-slate-600">{status.boletin_oficial}</p>
+            </div>
+          )}
         </div>
       )}
     </PanelShell>

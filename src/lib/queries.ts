@@ -2,18 +2,19 @@ import { supabase } from "@/lib/supabase";
 import type {
   AeroNavalStatus,
   MeteorologiaStatus,
+  Panel,
   Report,
   SituationalEvent,
 } from "@/types/db";
 
-export async function getLatestEvents(panel: "exploracion_exterior" | "exploracion_interna") {
+export async function getLatestEvents(panel: Panel, limit = 12) {
   const { data, error } = await supabase
     .from("situational_events")
     .select("*")
     .eq("panel", panel)
     .order("event_date", { ascending: false })
     .order("created_at", { ascending: false })
-    .limit(12);
+    .limit(limit);
 
   if (error) throw error;
   return (data ?? []) as SituationalEvent[];

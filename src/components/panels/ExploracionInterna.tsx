@@ -4,7 +4,7 @@ import PanelShell from "@/components/PanelShell";
 
 export default function ExploracionInterna({ events }: { events: SituationalEvent[] }) {
   return (
-    <PanelShell number={2} title="EXPLORACIÓN INTERNA">
+    <PanelShell number={2} title="EXPLORACIÓN INTERNA" href="/reportes/interior">
       {events.length === 0 ? (
         <p className="py-6 text-center text-sm text-slate-400">
           Sin eventos cargados aún. Se completará con la primera corrida de scraping en n8n.

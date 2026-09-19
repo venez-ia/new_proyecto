@@ -3,7 +3,7 @@ import PanelShell from "@/components/PanelShell";
 
 export default function AeroNaval({ status }: { status: AeroNavalStatus | null }) {
   return (
-    <PanelShell number={3} title="AERO NAVAL">
+    <PanelShell number={3} title="AERO NAVAL" href="/reportes/aeronaval">
       <div className="grid grid-cols-2 gap-4">
         <div>
           <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-500">Aéreo</p>

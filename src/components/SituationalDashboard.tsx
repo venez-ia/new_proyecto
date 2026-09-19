@@ -8,7 +8,7 @@ import {
   getLatestMeteorologia,
 } from "@/lib/queries";
 import type { AeroNavalStatus, MeteorologiaStatus, SituationalEvent } from "@/types/db";
-import DashboardHeader from "@/components/DashboardHeader";
+import AppShell from "@/components/AppShell";
 import ExploracionExterior from "@/components/panels/ExploracionExterior";
 import ExploracionInterna from "@/components/panels/ExploracionInterna";
 import AeroNaval from "@/components/panels/AeroNaval";
@@ -71,25 +71,22 @@ export default function SituationalDashboard() {
   }, []);
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-100">
-      <DashboardHeader />
-      <main className="flex-1 p-4 sm:p-6">
-        {error && (
-          <div className="mb-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-            {error}
-          </div>
-        )}
-        {loading ? (
-          <p className="text-sm text-slate-500">Cargando datos…</p>
-        ) : (
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-            <ExploracionExterior events={exterior} />
-            <ExploracionInterna events={interna} />
-            <AeroNaval status={aeroNaval} />
-            <Meteorologia status={meteo} />
-          </div>
-        )}
-      </main>
-    </div>
+    <AppShell>
+      {error && (
+        <div className="mb-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {error}
+        </div>
+      )}
+      {loading ? (
+        <p className="text-sm text-slate-500">Cargando datos…</p>
+      ) : (
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <ExploracionExterior events={exterior} />
+          <ExploracionInterna events={interna} />
+          <AeroNaval status={aeroNaval} />
+          <Meteorologia status={meteo} />
+        </div>
+      )}
+    </AppShell>
   );
 }
